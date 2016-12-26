@@ -1,0 +1,36 @@
+---
+title: "Car Data Exploration"
+author: "Jérôme Dauge"
+date: "December 26, 2016"
+output: ioslides_presentation
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Understanding Gas Mileage
+
+### Is there any relation between factors to gas mileage (`mpg`)?
+
+- Using the `mtcars` dataset
+- studying the relationship of various factor to gas mileage
+
+### Plot settings
+
+- **x axis** is weight (`wt`)
+- **y axis** is mileage (`mpg`)
+- **color** is the number of cylinders (`cyl`)
+- **size of an individual point** is the horsepower (`hp`)
+
+## Visualizing and explore the data
+
+```{r plot, echo=FALSE, warning=FALSE}
+suppressPackageStartupMessages(library(plotly))
+plot_ly(data = mtcars, x = ~wt, y = ~mpg, 
+        color = ~as.factor(cyl), size = ~hp,
+        text = ~paste("Weight: ", wt, '<br>MPG:', mpg),
+        type = "scatter", mode = "markers")
+```
+
